@@ -73,7 +73,7 @@ export CLICOLOR=1
 
 alias scpresume="rsync --partial --progress --rsh=ssh"
 
-git --git-dir=$HOME/DotFiles/ pull
+git --work-tree=$HOME/DotFiles/ pull
 
 # bash-completion
 if [ -f /opt/local/etc/bash_completion ]; then
