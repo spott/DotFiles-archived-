@@ -1,4 +1,2 @@
 export PATH=/usr/local/bin:$PATH
-git --work-tree=~/DotFiles/ pull
-git --work-tree=~/DotFiles/ submodule update
 . ~/.bashrc
