@@ -62,6 +62,9 @@ endif
 filetype plugin on
 filetype indent on
 
+" Set backupdirectory
+set backupdir=~/tmp/
+
 " Enable syntax highlighting, however, source
 " my syntax files.
 syntax enable
