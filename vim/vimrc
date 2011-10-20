@@ -1,15 +1,20 @@
 :""""""""""""""""""""""""""""""""""""
+" initialization stuff
+"""""""""""""""""""""""""""""""""""""""
+let $VIMHOME=$HOME."/DotFiles/vim"
+
+:""""""""""""""""""""""""""""""""""""
 " Vundle stuff:
 """""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype on
 filetype off
 
-set rtp+=~/.vim/vundle.git/
+set rtp+=~/DotFiles/vim/vundle.git/
 call vundle#rc()
 
 " Bundles!
-if hostname() ==? 'Serenity.local'
+if g:computer ==? 'Serenity'
 	Bundle 'Rip-Rip/clang_complete'
 else
 	Bundle 'OmniCppComplete'
@@ -28,13 +33,13 @@ Bundle 'YankRing.vim'
 Bundle 'minibufexpl.vim'
 Bundle 'sjl/threesome.vim.git'
 "Need to learn how to use the next few
-Bundle 'mru'
+Bundle 'mru.vim'
 "Bundle 'Raimondi/delimitMate'
 Bundle 'Shougo/neocomplcache'
 Bundle 'majutsushi/tagbar'
 Bundle 'kana/vim-arpeggio'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'rainbow_paraentheses'
+Bundle 'Rainbow-Parenthesis'
 
 """""""""""""""""""""""""""""""""""""""
 " General stuff:
@@ -83,7 +88,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 "edit vimrc easily
-map <leader>ev :e! ~/.vimrc<cr>
+map <leader>ev :e! $VIMHOME/vimrc<cr>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc

@@ -1,0 +1,14 @@
+[user]
+	name = Andrew Spott
+	email = andrew.spott@gmail.com
+[github]
+	user = spott
+[core]
+	editor = vim
+
+[merge]
+	tool = threesome
+
+[mergetool "threesome"]
+	cmd = "~/bin/mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
+	trustExitCode = true
