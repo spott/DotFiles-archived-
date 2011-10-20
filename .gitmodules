@@ -1,0 +1,6 @@
+[submodule "emacs-prelude"]
+	path = emacs-prelude
+	url = git://github.com/spott/emacs-prelude.git
+[submodule "evil"]
+	path = evil
+	url = git://gitorious.org/evil/evil.git

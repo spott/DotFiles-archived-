@@ -1,0 +1,7 @@
+This contains all my dotfiles, which include a couple of other directories that are other git repositories:
+
+vim - vim files
+emacs-prelude - emacs files
+evil - vim in emacs stuff
+shell - bash, ssh, and screen
+zsh - zsh

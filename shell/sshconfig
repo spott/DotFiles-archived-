@@ -1,0 +1,37 @@
+Host multiphoton
+Hostname multiphoton.colorado.edu
+User ansp6066
+Compression yes
+ForwardAgent yes
+
+Host photon
+Hostname multiphoton.colorado.edu
+User ansp6066
+Compression yes
+ForwardAgent yes
+
+Host work
+Hostname photon5.colorado.edu
+User ansp6066
+Compression yes
+ForwardAgent yes
+
+Host jiliac
+Hostname jiliac.colorado.edu
+User ansp6066
+Compression yes
+ForwardAgent yes
+
+Host janus
+Hostname login.rc.colorado.edu
+User ansp6066
+Compression yes
+ForwardAgent yes
+
+Host *.colorado.edu
+User ansp6066
+Compression yes
+ForwardAgent yes
+
+Host *
+Compression yes

@@ -1,0 +1,4 @@
+export PATH=~/bin:/Developer/usr/llvm-gcc-4.2/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
+export MANPATH=/opt/local/share/man:$MANPATH
+. ~/.bashrc
+

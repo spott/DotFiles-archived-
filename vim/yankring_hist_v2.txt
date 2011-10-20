@@ -1,0 +1,100 @@
+.,v
+  ac-R               0.1          available  Autocompletion routines for R,V
+23,v
+http://www.akelstudio.com/blog/behind-the-scene-godiva-liquor-splash-shot/,v
+ssh ansp6066@multiphoton.colorado.edu showbf -S | sed 's/^[ \t]*//g;/^$/d',v
+---------- ----- ------ ------- -------   --------------photon1     3   3696       1   11696         INFINITYphoton2     3   3696       1   11696         INFINITYphoton3     3   3696       1   11696         INFINITYphoton4     3   3696       1   11696         INFINITYphoton5     3   3696       1   11696         INFINITYphoton6     2   3696       1   11696      26:18:09:01photon7     3   3696       1   11696         INFINITYphoton8     3   3696       1   13680         INFINITYphoton11     7  48289       1  1,v
+  * ,V
+Inconsolata,v
+x ,v
+',v
+5,v
+    integer, intent(in) :: n,V
+n,v
+ ,v
+,,v
+l,v
+d,v
+,V
+1,v
+v,v
+www.fftw.org,v
+alue,v
+integrate,v
+    ,V
+,V
+! we have the hamiltonian:! H_0 + \mu E(t)! H_0 is easy, it is just the eigenvalues along the diagonal.! \mu is the dipole matrix element matrix, which is: !   \int_0^\inf \psi^*\vec{r} \psi dV! we seperate out the radial and angular parts, using the! dipole selection rules for the angular part, and for the! non-zero terms, doing the radial integration numerically, and the ! angular integration analytically.! This will be block tridiagonal if we ignore m, but non-sparse if we pay! attention to m.  This needs to be kept in mind,,V
+t,v
+e,v
+in the radial ,v
+3:propagateBasis.f90,v
+r,v
+!,v
+x,v
+!read in the eigenvalues!write(tempfilename,'(a110)') trim(path)//"/evalues00"!tempfilename=trim(adjustl(tempfilename))!write(*,*) tempfilename!open(unit=11,file=tempfilename,form='unformatted')!read(unit=11) evalues!close(11),V
+http://mountainproject.com/v/horsetooth-reservoir/105744295,v
+I'm going to crash... but I,v
+Show[Plot[\[ScriptN][\[Nu]] /. reprules71, {\[Nu], 0, 10^10}],  ListPlot[AFreqs], Frame -> {{True, False}, {True, False}},  FrameLabel -> {"Frequency (Hz)", "Accumulated Number of Modes"}],v
+!read in the eigenvalues!write(tempfilename,'(A110)') trim(path)//"/evalues00"!tempfilename=trim(adjustl(tempfilename))!write(*,*) tempfilename!open(unit=11,file=tempfilename,form='unformatted')!read(unit=11) evalues!close(11),V
+*,v
+http://www.firsttvdrama.com/funstuff/voyagen.html,v
+),v
+(,v
+=,v
+&,v
+*100,v
+*110,v
+write(*,*) "here?",V
+trim,v
+      write(*,*) "here1",V
+    character*110 :: filename,V
+Bus error: 10[spott@Serenity ../findBasis-fortran/data]$ ../propagateBasis n3/ here? here1,V
+?,v
+temp,v
+    write(*,*) evectors(1,1:50),V
+ectors,v
+so the cross section is just that, plus stuff on page 186.  g(\[Nu]) must be normalized!,v
+\[Nu]a[{m_Integer, n_Integer, p_Integer}, {x_, y_, z_}] :=  Norm[{(m c)/(2 x), (n c)/(2 y), (p c)/(2 z)}, 2],v
+subroutine readFile(path, filename, vector)    character*100 path    character*110 tempfilename    write(tempfilename,'(A110)') trim(path)//"/"//filename    tempfilename=trim(adjustl(tempfilename))    !write(*,*) tempfilename    open(unit=11,file=tempfilename,form='unformatted')    read(unit=11) vector    close(11)end subroutine readFile,V
+w,v
+alues,v
+",v
+"//filename,v
+    write(tempfilename,'(A110)') trim(path)//"/"//filename    tempfilename=trim(adjustl(tempfilename))    !write(*,*) tempfilename    open(unit=11,file=tempfilename,form='unformatted')    read(unit=11) vector    close(11),V
+evectors,v
+character*100 path,V
+filename,v
+character*110 tempfilename,V
+evectors00",v
+!write(*,*) evalues!write(*,*) evectors,V
+    !write(*,*) evalues(i)    !write(*,*) evectors(i,:),V
+write(*,*) evalues(1)write(*,*) evectors(1,1:50),V
+    write(*,*) evalues(i)    write(*,*) evectors(i,:),V
+,V
+write(*,*) evalues,V
+s,v
+u,v
+a,v
+write(tempfilename,'(A110)') trim(path)//"/evalues00"tempfilename=trim(adjustl(tempfilename))write(*,*) tempfilenameopen(unit=11,file=tempfilename,form='unformatted')read(unit=11) evaluesclose(11),V
+0,v
+:,v
+tempfilename,v
+write,V
+m,v
+f,v
+o,v
+action="read",v
+,form="unformatted",v
+,recl=order,v
+access="direct",v
+,rec=1,v
+-edit,v
+         suj R 545.8   0 energy_level,V
+9,v
+au BufRead,BufNewFile *.f90 let b:fortran_fixed_source=1,V
+au BufRead,BufNewFile *.for let b:fortran_fixed_source=1,v
+7.12,v
+((m v)/Sqrt[1 - v^2/c^2]),v
+http://siliconfilter.com/google-engineer-google-is-a-prime-example-of-our-complete-failure-to-understand-platforms/,v
+Table[D[{f[x], g[x]}, {x, m}], {m, 0, 1}],v
+In[360]:= ColorData["FallColors"]Out[360]= ColorDataFunction[{0, 1}, \!\(\*PanelBox[StyleBox[GraphicsBox[RasterBox[CompressedData["1:eJwV1Xs01AkbB3Cx7m01oiS9SqUQViiX9C2JokLskqjIEJVasW0K0YVCUi5dbJbcNsRqbS4hK+UyY2bMjLm4zRiMcRnKpVaq97d/POc853PO8/zzfM951vmfO0yWk5GRWUQUmaj/+r012e53s+lwehD82fMnHpxbFG0f/8iDj2Lzsd1f6Ai6d6JpG+HZIQvdLRIuwjxGgz94M3A9yTNRg/Dpxe8j56K4uJWzNOJpFQM5Nw+5zxDzDmVDqzaocZEtNb/qsaIT9Vf3rmYS/siNX+VWwMHfNt6J8uGd4EfuEP1JuHS6wzPGmgNKQkzG34xOfAw3K75LuF1G01xJRxdE7LycIBMm1M8ZXDhHeIZlVTrfvwv/6raVaCYzYRq8zuYQ4aP8EnOlj2wsOz/5snWUiUMnNeWMCLeNymFaJLKhV6feFLmPhdO+S9tVCU/VyQg7qcOGrYp1h2EBCwmeCvdHPXgYarxNSn3BgofncV6PHBv5bl+8Wwm3Cogpr3dkISTv+mCyHxuNzjO6RYQnKYS7jHczEfv+j8mdDWz07R0bvUm4oOiUdNV5JjJ30uYntbvwGQMVZMLNnX2THb9j4nnijHxOZBc0rXmR9oQnTLhtiXjQiULlmt297C4E6PZff7uDB3t7zR7/XZ0gSxr6TLZwsEwsuzxljgu6XFwpfWkn1rc2X46L46C2WC/Hs5wL36ax6J39DAiL2jXZXA4CzzuZrA3hQhL3o2vJcwaeJDAqN5lwQbIIrRtZz0WEXcM6rWgGfE5xDkfe4KLu31TnP3s5kJXVn44/yIDWvt5JSjcXp+oreZcyObjTeO/NrDYD3E2iJJ2tPCy/xguyc+NAK3Yh/eQ4HRmKEv2wBB7qHb/MqqhyULArMIhRS4eHWPr2TR8PIYvXXWe+6YKZDN0SiXSovZs5udKCDw2GvVpWdBcaGqxUSr3poBfMy4Qk8vE6/dTvAZZdcI552q1lQMedmzJPXgn5OOOdZGz0gY3yKC1v0jQNBwIVbJZadmOlTvmr2WI2WhYmFsZTaVBxWMz1u9ONf0RMp3oyG4LLjdktP9DQslEt4q/Bbpwt+si9SeTg3/k0uzxaB27Ka6op2vRA8+zqIBceC2qRp4ZiQjtgEeGY9kNFD56amHpQm1noXfyi0MWyA70lqrearXqh/b5hKr+dhTj96ksPV3bg+iAtyruxF+kVh5KjGSzoOTQ4i+ao2KKdFja5rw9Lw3v1PTkstPs3rzHqooLl7hV0nd6HBIszb016WTgf0z75SyUVVxK1fVZ59UP247y/kogF9SxG4+s0KjY0CVyf9/fjctWtb4IRFqqrOPdVwqkIjOrMzTETYOaSZla1lIVj7F6yhzsV1g/N15y5KECoTaHlvRkW5D6Itj/ZSsWSyozMbbUCiBcs2CHzLBQuGVUeIVExQP9EWvRNAL/6Nz/vkWHjgOFUt+l7Cv4e905qtxOCH+O+RFuBjfeOc6WX6RTcVqpTyLgphPvugWczqmykByzENJdRcGyDTuyJNiGosj87UklsWMfKHl6aQoHprtjPBksG4PDmmyh/JRv9vyltOBJKgbyPKGLWbQCvb9y5Gr2GjWs1S+ZyD1LAu7h3qiF9AFaOa9Z4rmdjM0e9ZXwLBZRk+plnUwOYWNaX+yqP2HOtPpVC+OunRyVpziLk8p9s1tXrQsYPp46WEP6iepgcUyDCT3nHn8cXduFgL2ljEuEFtJ8HghcNQjV0rfnEZg7kb9dKTxP+aGjhmIfPIBq2C6sPP+Pg1TZylTPhyZ/ju3e+HET4olxUGXJxQbQkzpDwq6TlXvpqQ9j832FLuTC4W+WsSnjYpies5WeH0J223vmaMQ/CHf4aY4YUBNrqu319N4SUY4P0kTIeHkhU+9sIP+L+F3VEdxj2m/N/OmTKh2tGZdEzwg8Ew4kZNYxP78k9Lyr4UNxzPOw24bti2t7WcYdRUqvnv8q8G/WTSjtCCDdL/3FPkZkYfjfE4ujKbkRkVcg7Ea5XLGi4d0cMDZeis4PberBlvw9Nn3CtxtM7oiRitGkGT++v6oFoVv6hMuHfc+aqguxHED2gf6mMyPvj3DJ/iQEFki2zGzKzRkDLf73agtkLygOF0LCtFGTI8s+5To7Ay0fu03xWH6bWVS0c3E/BHm59jbKdBEI1B9brwH5oFAcn6p+gYKr0qXxTmgSVAfZeezQFsDJfrSV/kYKsawmuV8QSfGogO+hFCeBbRykSJFPgdOTsYwvrUdiujjdXHhAgziF6+6s8Cj4aHx6WJo0i9pci3XEHIXFXk7eZtRTkfbfdtKh/FG8ZrctoxUK0ewk9LnRS4MZffcVv6xhUjMa+/rlsAFPCe6JDEgq+lsm807oxBpeExRNpEQNQP20fZiBDRfGNIRKLM4b7IqPui3wijzOzMgorqfA62uaTbDAO7k6XVm+I4BtVmCI0okLBtKzQIWoc2o/Ov7TNEyFO4cj/6uypqFBI+/CNNg6/2dT8tcqDKEhRKX1wlIoTPb/aVutOIN/1xX250EG0a76yCQ+j4vsK34SwiAmMFrNihzsHMZlzts3lFhU18XZMw5YJGCvOnWvdPgR1Q50jhr9TsU1wcaFkfAKrXgaS+XFD2Pe9mmNTBxVakWx1tfkJeJFijsk2DkEhKz/ASrkDX5ebGV1UlCLzdKanwbchvDGwiivb04GB0rt7e9Sl6Goucz1sO4zYakr2xugOvHOU+u7WlUJjbcv+yMvDwL4TdY+rOlAsdP6lwEQKj0iBXW71MBa6pvmk6Q6kXP7jjqqtFPdZn2zaPg6jhhz/Kd6IhgsaioXnnaToNCZZfLAQ49cZrRVfg2jwLAtoYHtKQbqlb6wVLobFtedm4bk02Oz/h2NNlsJVtHuTXYUY0yQ7t9EeGnREOlPZYVKk2HqvDZkSw4sesr1clQ65qCgl+atSdGSGrbpnPIKXmeYOY5vpEK/oXhuSLMXiD7fVas6MYMXxrx56DnRQyi2taI+kcD7wVHXg2QjC9VpO+p2ko9wpw828SIrbBbXfqUhGwJxIDcu6Skfa4HTww0opWmVYX0w3SbC18mgs5zc6fo12i/v6jxRKR8fnjpAlSL2y8a4a8Qf/D4ZX0N4="], {{0, 0}, {1, 1}}],AspectRatio->NCache[Rational[1, 8], 0.125],ImageSize->65,PlotRange->{{0, 1}, {0, 1}}],StripOnInput->False,CacheGraphics->False],FrameMargins->5]\)],v
