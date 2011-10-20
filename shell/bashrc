@@ -73,9 +73,6 @@ export CLICOLOR=1
 
 alias scpresume="rsync --partial --progress --rsh=ssh"
 
-git --git-dir=~/DotFiles/ pull
-git --git-dir=~/DotFiles/ submodule update
-
 # bash-completion
 if [ -f /opt/local/etc/bash_completion ]; then
 	. /opt/local/etc/bash_completion
