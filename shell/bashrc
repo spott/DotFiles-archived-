@@ -71,6 +71,7 @@ unset bash_prompt
 export HISTCONTROL=ignoredups
 export CLICOLOR=1
 
+alias ls="ls --color=always"
 alias scpresume="rsync --partial --progress --rsh=ssh"
 
 git --git-dir=$HOME/DotFiles/.git pull
