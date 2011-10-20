@@ -68,6 +68,7 @@ PROMPT_COMMAND=bash_prompt_command
 bash_prompt
 unset bash_prompt
 
+export HISTCONTROL=ignoredups
 export CLICOLOR=1
 
 alias scpresume="rsync --partial --progress --rsh=ssh"
