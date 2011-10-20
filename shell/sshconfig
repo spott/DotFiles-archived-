@@ -4,6 +4,12 @@ User ansp6066
 Compression yes
 ForwardAgent yes
 
+Host yotta
+Hostname yotta.colorado.edu
+User ansp6066
+Compression yes
+ForwardAgent yes
+
 Host photon
 Hostname multiphoton.colorado.edu
 User ansp6066
