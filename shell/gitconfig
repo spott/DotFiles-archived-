@@ -5,6 +5,7 @@
 	user = spott
 [core]
 	editor = vim
+	excludesfile = /Users/spott/.gitignore_global
 
 [merge]
 	tool = threesome
@@ -15,3 +16,9 @@
 
 [color]
 	ui = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
