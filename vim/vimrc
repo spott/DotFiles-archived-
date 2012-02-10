@@ -14,33 +14,36 @@ set rtp+=~/DotFiles/vim/vundle.git/
 call vundle#rc()
 
 " Bundles!
-if g:computer ==? 'Serenity'
-	Bundle 'Rip-Rip/clang_complete'
-else
-	Bundle 'OmniCppComplete'
-endif
+
+"completion... using OmniCppComplete for now
+"if g:computer ==? 'Serenity'
+"	Bundle 'Rip-Rip/clang_complete'
+"else
+Bundle 'OmniCppComplete'
+"endif
 Bundle 'fortran.vim'
 Bundle 'scrooloose/nerdtree'
 "Bundle 'taglist.vim'
-Bundle 'sophacles/vim-outliner'
+"Bundle 'sophacles/vim-outliner' "this isn't needed'"
 "Bundle 'motemen/git-vim'
 Bundle 'fugitive.vim'
 Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'sessionman.vim' 
+"Bundle 'sessionman.vim' 
 Bundle 'cpp.vim'
 Bundle 'YankRing.vim'
-Bundle 'minibufexpl.vim'
 Bundle 'sjl/threesome.vim.git'
 "Need to learn how to use the next few
 Bundle 'mru.vim'
 "Bundle 'Raimondi/delimitMate'
-Bundle 'Shougo/neocomplcache'
+"Bundle 'Shougo/neocomplcache'
 Bundle 'majutsushi/tagbar'
-Bundle 'kana/vim-arpeggio'
+"Bundle 'kana/vim-arpeggio'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Rainbow-Parenthesis'
-
+Bundle 'rosenfeld/conque-term'
+Bundle 'sandeepcr529/Buffet.vim'
+Bundle 'SirVer/ultisnips'
 """""""""""""""""""""""""""""""""""""""
 " General stuff:
 """""""""""""""""""""""""""""""""""""""
@@ -94,7 +97,7 @@ let g:mapleader = ","
 map <leader>ev :e! $VIMHOME/vimrc<cr>
 
 " When vimrc is edited, reload it
-autocmd! bufwritepost .vimrc source ~/.vimrc
+autocmd! bufwritepost $VIMHOME/vimrc source $VIMHOME/vimrc
 
 " set encoding to utf8
 set encoding=utf8
@@ -112,6 +115,11 @@ let g:yankring_history_file = '.vim/yankring_hist'
 """""""""""""""""""""""""""""""""""""""
 " C++/C programming
 """""""""""""""""""""""""""""""""""""""
+"au filetype c++ nnoremap <leader>ll make
+"au filetype c nnoremap <leader>ll make
+"au filetype ch nnoremap <leader>ll make
+"au filetype fortran nmap <leader>ll make
+
 au filetype c++ set cindent
 au filetype c set cindent
 au filetype ch set cindent
@@ -122,27 +130,27 @@ au filetype ch set cindent
 "nnoremap <leader>cc  I//<ESC>
 
 
-function! Comment(fl,ll)
-	let i=a:fl
-	let a:start=0
-	let a:commented=0
-	while i<=a:ll
-		if (getline(i) =~ '/\{-}\/\*.*' && a:start==0)
-			exec(i.'s/\/\*//')
-			let a:start=1
-			let a:commented=1
-		endif
-		if (getline(i) =~ '/\{-}\*\/')
-			exec(i.'s/\*\///g')
-			let a:commented=1
-		endif
-		let i+=1
-	endwhile
-	if !a:commented
-		exec(a:fl.'s/^/\/\*/')
-		exec(a:ll.'s/$/\*\//')
-	endif
-endfunction
+"function! Comment(fl,ll)
+	"let i=a:fl
+	"let a:start=0
+	"let a:commented=0
+	"while i<=a:ll
+		"if (getline(i) =~ '/\{-}\/\*.*' && a:start==0)
+			"exec(i.'s/\/\*//')
+			"let a:start=1
+			"let a:commented=1
+		"endif
+		"if (getline(i) =~ '/\{-}\*\/')
+			"exec(i.'s/\*\///g')
+			"let a:commented=1
+		"endif
+		"let i+=1
+	"endwhile
+	"if !a:commented
+		"exec(a:fl.'s/^/\/\*/')
+		"exec(a:ll.'s/$/\*\//')
+	"endif
+"endfunction
 
 """""""""""""""""""""""""""""""""""""""
 " Quickfix stuff
@@ -252,26 +260,47 @@ map <leader>tm :tabmove
 """""""""""""""""""""""""""""""""""""""
 " Plugin stuff
 """""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
+" => UltiSnips
+""""""""""""""""""""""""""""""
+let g:UltiSnipsSnippetsDir = "~/.vim/snips"
+let g:UltiSnipsSnippetDirectories=["snips","UltiSnips"]
+
+let g:UltiSnipsEditSplit = "vertical"
+
+let g:UltiSnipsListSnippets="<C-Tab>"
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
+
+
+""""""""""""""""""""""""""""""
+" => Buffet
+""""""""""""""""""""""""""""""
+map <F1> :Bufferlist<CR>
 
 """"""""""""""""""""""""""""""
 " => Taglist
 """"""""""""""""""""""""""""""
 "look for tags
-set tags=tags;/     
+set tags=tags;$HOME     
 
 " configure tags - add additional tags here or comment out not-used ones
-set tags+=~/.vim/tags/cpp
-set tags+=~/.vim/tags/petsc
-set tags+=~/.vim/tags/gsl
-set tags+=~/.vim/tags/armadillo
-set tags+=~/.vim/tags/blitz++
-set tags+=~/.vim/tags/fftw
+set tags+=~/.tags/trilinos
+set tags+=~/.tags/petsc
+set tags+=~/.tags/gsl
+set tags+=~/.tags/fftw
+set tags+=~/.tags/mpi
+set tags+=~/.tags/boost-mpi
 
-"set tags+=~/.vim/tags/ebasis
+"set tags+=~/.tags/armadillo
+"set tags+=~/.tags/blitz++
+
 
 " build tags of your own project with Ctrl-F12
 
-if hostname() ==? "serenity"
+if g:computer ==? "Serenity"
 	map <C-F12> :!/usr/local/bin/ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 else
 	map <C-F12> :!/usr/bin/ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
@@ -282,26 +311,26 @@ endif
 let g:ctags_statusline=1
 " Automatically start script
 let generate_tags=1
-" Displays taglist results in a vertical window:
-let Tlist_Use_Horiz_Window=0
-" Various Taglist diplay config:
-let Tlist_Use_Right_Window = 1
-let Tlist_Compact_Format = 1
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_File_Fold_Auto_Close = 0
-let Tlist_Display_Prototype = 1
+"" Displays taglist results in a vertical window:
+"let Tlist_Use_Horiz_Window=0
+"" Various Taglist diplay config:
+"let Tlist_Use_Right_Window = 1
+"let Tlist_Compact_Format = 1
+"let Tlist_Exit_OnlyWindow = 1
+"let Tlist_GainFocus_On_ToggleOpen = 1
+"let Tlist_File_Fold_Auto_Close = 0
+"let Tlist_Display_Prototype = 1
 
-" TODO: Change this when transfering
-" change this to ctags directory
-if hostname() ==? "serenity"
-	let Tlist_Ctags_Cmd = "/usr/local/bin/ctags" 
-else
-	let Tlist_Ctags_Cmd = "/usr/bin/ctags" 
-endif
+"" TODO: Change this when transfering
+"" change this to ctags directory
+"if g:computer ==? "Serenity"
+	"let Tlist_Ctags_Cmd = "/usr/local/bin/ctags" 
+"else
+	"let Tlist_Ctags_Cmd = "/usr/bin/ctags" 
+"endif
 
 "Toggle the sidebars
-nnoremap <silent> <F2> :TlistToggle<CR>
+nnoremap <silent> <F2> :TagbarToggle<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 """"""""""""""""""""""""""""""
@@ -319,26 +348,24 @@ set iskeyword+=:
 " => Omnicppcomplete
 """"""""""""""""""""""""""""""
 
-
-
 " OmniCppComplete (only for work comp?)
-if hostname() !=? 'serentiy'
-	au filetype c++ let OmniCpp_NamespaceSearch = 1
-	let OmniCpp_GlobalScopeSearch = 1
-	let OmniCpp_ShowAccess = 1
-	au filetype c++ let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-	au filetype c++ let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-	au filetype c++ let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-	au filetype c++ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-	let OmniCpp_DefaultNamespaces = ["std"]
-	" automatically open and close the popup menu / preview window
-	au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-	set completeopt=menuone,menu,longest,preview
-else
-	let g:clang_use_library = 1
-	let g:clang_complete_copen = 1
-	let g:clang_library_path = '/Developer/usr/clang-ide/lib/libclang.dylib'
-endif
+""if hostname() !=? 'serentiy'
+au filetype c++ let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+au filetype c++ let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+au filetype c++ let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+au filetype c++ let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+au filetype c++ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
+"else
+	"let g:clang_use_library = 1
+	"let g:clang_complete_copen = 1
+	"let g:clang_library_path = '/Developer/usr/clang-ide/lib/libclang.dylib'
+"endif
 
 """""""""""""""""""""""""""""""""""""""
 " Python
