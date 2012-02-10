@@ -44,6 +44,7 @@ Bundle 'Rainbow-Parenthesis'
 Bundle 'rosenfeld/conque-term'
 Bundle 'sandeepcr529/Buffet.vim'
 Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-surround'
 """""""""""""""""""""""""""""""""""""""
 " General stuff:
 """""""""""""""""""""""""""""""""""""""
