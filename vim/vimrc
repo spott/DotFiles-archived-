@@ -2,13 +2,13 @@
 " VimRC - with all the bells and 
 "	whistles
 """""""""""""""""""""""""""""""""""""""
-
 """""""""""""""""""""""""""""""""""""""
 " initialization stuff
 " 	- initialize environment variables
 """""""""""""""""""""""""""""""""""""""
 let $VIMHOME=$HOME."/DotFiles/vim"
-
+let $VIM=$HOME."/DotFiles/vim"
+set runtimepath=~/DotFiles/vim/,$VIMRUNTIME
 """""""""""""""""""""""""""""""""""""""
 " Vundle
 """""""""""""""""""""""""""""""""""""""
@@ -70,6 +70,10 @@ syntax enable
 " wrap lines
 set wrap linebreak
 
+"folding
+set foldmethod=indent   "fold based on indent
+set nofoldenable
+
 " Set tabstop to 4 and shiftwidth to 4
 set tabstop=4
 set shiftwidth=4
@@ -115,7 +119,6 @@ endtry
 """""""""""""""""""""""""""""""""""""""
 " Python
 """""""""""""""""""""""""""""""""""""""
-set foldmethod=indent   "fold based on indent
 
 """""""""""""""""""""""""""""""""""""""
 " Fortran fixed/free stuff
@@ -267,6 +270,16 @@ map <leader>tm :tabmove
 " Plugin stuff
 """""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""
+" => Syntastic
+"""""""""""""""""""""""""""""""""""""""
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_include_dirs = [ '/usr/local/include/', $PWD, $HOME.'/Documents/EnergyBasisSchrodingerSolver/' ]
+let g:syntastic_cpp_auto_refresh_includes = 1
+
+let g:syntastic_c_include_dirs = [ '/usr/local/include/', $PWD, $HOME.'/Documents/EnergyBasisSchrodingerSolver/' ]
+let g:syntastic_c_auto_refresh_includes = 1
 
 """""""""""""""""""""""""""""""""""""""
 " => Showmarks
