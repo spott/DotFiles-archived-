@@ -5,7 +5,6 @@
 	user = spott
 [core]
 	editor = vim
-	excludesfile = /Users/spott/.gitignore_global
 
 [merge]
 	tool = threesome
@@ -14,18 +13,5 @@
 	cmd = "~/bin/mvim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
 	trustExitCode = true
 
-[diff]
-	tool = vimdiff
-
-[difftool "vimdiff"]
-	cmd = "~/bin/mvim -d $BASE $LOCAL"
-
 [color]
 	ui = true
-
-[difftool "sourcetree"]
-	cmd = ~/bin/mvim -d $REMOTE $LOCAL $BASE $MERGED
-	path = 
-[mergetool "sourcetree"]
-	cmd = ~/bin/mvim  -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'
-	trustExitCode = true

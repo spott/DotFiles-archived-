@@ -1,18 +1,12 @@
 " vim -u test/vimrc
 set nocompatible
 
-set nowrap
-
-let root = '/tmp/!vundle-test/bundles/'
+let root = '/tmp/vundle_bundles/'
 let src = 'http://github.com/gmarik/vundle.git' 
-
 " let src = '~/.vim/bundle/vundle/.git' 
 
-" Vundle Options
-" let g:vundle_default_git_proto = 'git'
-
-if !isdirectory(expand(root, 1).'/vundle')
-  exec '!git clone '.src.' '.shellescape(root, 1).'/vundle'
+if !isdirectory(expand(root).'/vundle')
+  exec '!git clone '.src.' '.root.'/vundle'
 endif
 
 filetype off
@@ -62,13 +56,8 @@ filetype plugin indent on      " Automatically detect file types.
 
 set wildignore+=doc              " should not break helptags
 set wildignore+=.git             " should not break clone
-set wildignore+=.git/*             " should not break clone
-set wildignore+=*/.git/*
-" TODO: helptags fails with this
-" set wildignore+=doc/*             " should not break clone
-" set wildignore+=*/doc/*
 
-au VimEnter * BundleInstall
+BundleInstall
 
 func! s:assert_bundles() abort
   for b in g:bundles
