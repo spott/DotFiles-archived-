@@ -1,11 +1,19 @@
-:""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
+" VimRC - with all the bells and 
+"	whistles
+"""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 " initialization stuff
+" 	- initialize environment variables
 """""""""""""""""""""""""""""""""""""""
 let $VIMHOME=$HOME."/DotFiles/vim"
-
-:""""""""""""""""""""""""""""""""""""
-" Vundle stuff:
+let $VIM=$HOME."/DotFiles/vim"
+set runtimepath=~/DotFiles/vim/,$VIMRUNTIME
 """""""""""""""""""""""""""""""""""""""
+" Vundle
+"""""""""""""""""""""""""""""""""""""""
+
+" Init stuff
 set nocompatible
 filetype on
 filetype off
@@ -13,72 +21,71 @@ filetype off
 set rtp+=~/DotFiles/vim/vundle.git/
 call vundle#rc()
 
-" Bundles!
-if g:computer ==? 'Serenity'
-	Bundle 'Rip-Rip/clang_complete'
-else
-	Bundle 'OmniCppComplete'
-endif
+" Bundles
+Bundle 'OmniCppComplete'
 Bundle 'fortran.vim'
 Bundle 'scrooloose/nerdtree'
-"Bundle 'taglist.vim'
-Bundle 'sophacles/vim-outliner'
-"Bundle 'motemen/git-vim'
 Bundle 'fugitive.vim'
 Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'sessionman.vim' 
 Bundle 'cpp.vim'
 Bundle 'YankRing.vim'
-Bundle 'minibufexpl.vim'
 Bundle 'sjl/threesome.vim.git'
-"Need to learn how to use the next few
 Bundle 'mru.vim'
-"Bundle 'Raimondi/delimitMate'
-Bundle 'Shougo/neocomplcache'
 Bundle 'majutsushi/tagbar'
-Bundle 'kana/vim-arpeggio'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Rainbow-Parenthesis'
+Bundle 'rosenfeld/conque-term'
+Bundle 'sandeepcr529/Buffet.vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-surround'
+"Bundle 'scrooloose/syntastic'
+Bundle 'sophacles/vim-outliner'
+Bundle 'ShowMarks'
+Bundle 'int3/vim-extradite'
+Bundle 'aghareza/vim-gitgrep'
+Bundle 'guicolorscheme.vim'
+Bundle 'argtextobj.vim'
+Bundle 'kana/vim-textobj-function'
+
+
 
 """""""""""""""""""""""""""""""""""""""
 " General stuff:
 """""""""""""""""""""""""""""""""""""""
-" Fortran fixed/free stuff
-au BufRead,BufNewFile *.f90 let b:fortran_fixed_source=0
-au BufRead,BufNewFile *.f let b:fortran_fixed_source=0
-let s:extfname = expand("%:e")
-if s:extfname ==? "f90"
-	let fortran_free_source=1
-	unlet! fortran_fixed_source
-    let fortran_fold=1
-    let fortran_more_precise=1
-else
-	let fortran_fixed_source=1
-	unlet! fortran_free_source
-endif
 
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
 
-" Set backupdirectory
+" Set backupdirectory 
+" (where the .sw files go, avoids cluttering up 
+"  the current directory)
 set backupdir=~/tmp/
 
 " Enable syntax highlighting, however, source
 " my syntax files.
 syntax enable
 
-" wrap my lines...
+" wrap lines
 set wrap linebreak
+
+"folding
+"set foldmethod=indent   "fold based on indent
+"set nofoldenable
 
 " Set tabstop to 4 and shiftwidth to 4
 set tabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
 
-" Set undo levels
+" Set undo levels and keep across sessions
 set ul=1000
+set undodir=~/tmp/
+set undofile
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
 
 " Autoread modified files:
 set autoread
@@ -94,7 +101,7 @@ let g:mapleader = ","
 map <leader>ev :e! $VIMHOME/vimrc<cr>
 
 " When vimrc is edited, reload it
-autocmd! bufwritepost .vimrc source ~/.vimrc
+autocmd! bufwritepost $VIMHOME/vimrc source $VIMHOME/vimrc
 
 " set encoding to utf8
 set encoding=utf8
@@ -102,55 +109,68 @@ try
     lang en_US
 catch
 endtry
-"""""""""""""""""""""""""""""""""""""""
-" Yankring plugin
-"""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <F5> :YRShow<CR>
 
-let g:yankring_history_file = '.vim/yankring_hist'
+"""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
+" Language Specific Stuff
+"""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""
+" Python
+"""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""
+" Fortran fixed/free stuff
+"""""""""""""""""""""""""""""""""""""""
+au filetype fortran nmap <leader>ll make all
+au BufRead,BufNewFile *.f90 let b:fortran_fixed_source=0
+au BufRead,BufNewFile *.f let b:fortran_fixed_source=0
+let s:extfname = expand("%:e")
+if s:extfname ==? "f90"
+	let fortran_free_source=1
+	unlet! fortran_fixed_source
+    let fortran_fold=1
+    let fortran_more_precise=1
+else
+	let fortran_fixed_source=1
+	unlet! fortran_free_source
+endif
 
 """""""""""""""""""""""""""""""""""""""
 " C++/C programming
 """""""""""""""""""""""""""""""""""""""
+au filetype c++ nnoremap <leader>ll make all
+au filetype c nnoremap <leader>ll make all
+au filetype ch nnoremap <leader>ll make all
+
 au filetype c++ set cindent
 au filetype c set cindent
 au filetype ch set cindent
-
-"comment using <leader>cc
-""vnoremap <leader>cc  <ESC>`>a*/<ESC>`<i/*<ESC>
-"vnoremap <leader>cc  <Esc>`<:let fl=line(".")<CR>`>:let ll=line(".")<CR>:call Comment(fl, ll)<CR>
-"nnoremap <leader>cc  I//<ESC>
-
-
-function! Comment(fl,ll)
-	let i=a:fl
-	let a:start=0
-	let a:commented=0
-	while i<=a:ll
-		if (getline(i) =~ '/\{-}\/\*.*' && a:start==0)
-			exec(i.'s/\/\*//')
-			let a:start=1
-			let a:commented=1
-		endif
-		if (getline(i) =~ '/\{-}\*\/')
-			exec(i.'s/\*\///g')
-			let a:commented=1
-		endif
-		let i+=1
-	endwhile
-	if !a:commented
-		exec(a:fl.'s/^/\/\*/')
-		exec(a:ll.'s/$/\*\//')
-	endif
-endfunction
 
 """""""""""""""""""""""""""""""""""""""
 " Quickfix stuff
 """""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <F4> :botright cwindow 5<CR>
 
+" move to the next and previous error"
+map cn <esc>:cn<cr>
+map cp <esc>:cp<cr>
+
 "map <leader>cc :.cc<CR>
 
+"""""""""""""""""""""""""""""""""""""""
+" Spell Checking
+"""""""""""""""""""""""""""""""""""""""
+
+"Pressing ,ss will toggle and untoggle spell checking
+map <leader>sc :setlocal spell!<cr>
+
+"Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
 
 """""""""""""""""""""""""""""""""""""""
 " Search stuff
@@ -170,11 +190,11 @@ map <leader>hl :nohlsearch<CR>
 " Make search act like search in modern browsers
 set incsearch 
 
-"Show matching bracets when text indicator is over them
+"Show matching brackets when text indicator is over them
 set showmatch 
 
 "How many tenths of a second to blink
-set mat=3 
+set mat=5 
 
 """""""""""""""""""""""""""""""""""""""
 " UI stuff
@@ -222,10 +242,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" move to the next and previous error"
-map cn <esc>:cn<cr>
-map cp <esc>:cp<cr>
-
 " keymaps for switching buffers
 noremap <C-h> :sbp<CR>
 noremap <C-l> :sbn<CR>
@@ -250,28 +266,73 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 
 """""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 " Plugin stuff
 """""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""
+" => Syntastic
+"""""""""""""""""""""""""""""""""""""""
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_include_dirs = [ '/usr/local/include/', $PWD, $HOME.'/Documents/EnergyBasisSchrodingerSolver/' ]
+let g:syntastic_cpp_auto_refresh_includes = 1
+
+let g:syntastic_c_include_dirs = [ '/usr/local/include/', $PWD, $HOME.'/Documents/EnergyBasisSchrodingerSolver/' ]
+let g:syntastic_c_auto_refresh_includes = 1
+
+"""""""""""""""""""""""""""""""""""""""
+" => Showmarks
+"""""""""""""""""""""""""""""""""""""""
+let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY"
+
+"""""""""""""""""""""""""""""""""""""""
+" => NERDTree
+"""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <F3> :NERDTreeToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""
+" => Yankring plugin
+"""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <F5> :YRShow<CR>
+
+let g:yankring_history_file = '.vim/yankring_hist'
+
+""""""""""""""""""""""""""""""
+" => UltiSnips
+""""""""""""""""""""""""""""""
+let g:UltiSnipsSnippetsDir = "~/.vim/snips"
+let g:UltiSnipsSnippetDirectories=["snips","UltiSnips"]
+
+let g:UltiSnipsEditSplit = "vertical"
+
+let g:UltiSnipsListSnippets="<C-Tab>"
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
+""""""""""""""""""""""""""""""
+" => Buffet
+""""""""""""""""""""""""""""""
+map <F1> :Bufferlist<CR>
 
 """"""""""""""""""""""""""""""
 " => Taglist
 """"""""""""""""""""""""""""""
 "look for tags
-set tags=tags;/     
+set tags=tags;$HOME     
 
 " configure tags - add additional tags here or comment out not-used ones
-set tags+=~/.vim/tags/cpp
-set tags+=~/.vim/tags/petsc
-set tags+=~/.vim/tags/gsl
-set tags+=~/.vim/tags/armadillo
-set tags+=~/.vim/tags/blitz++
-set tags+=~/.vim/tags/fftw
+set tags+=~/.tags/trilinos
+set tags+=~/.tags/petsc
+set tags+=~/.tags/gsl
+set tags+=~/.tags/fftw
+set tags+=~/.tags/mpi
+set tags+=~/.tags/boost-mpi
 
-"set tags+=~/.vim/tags/ebasis
+" build tags for your own project with Ctrl-F12
 
-" build tags of your own project with Ctrl-F12
-
-if hostname() ==? "serenity"
+if g:computer ==? "Serenity"
 	map <C-F12> :!/usr/local/bin/ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 else
 	map <C-F12> :!/usr/bin/ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
@@ -282,27 +343,9 @@ endif
 let g:ctags_statusline=1
 " Automatically start script
 let generate_tags=1
-" Displays taglist results in a vertical window:
-let Tlist_Use_Horiz_Window=0
-" Various Taglist diplay config:
-let Tlist_Use_Right_Window = 1
-let Tlist_Compact_Format = 1
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_File_Fold_Auto_Close = 0
-let Tlist_Display_Prototype = 1
-
-" TODO: Change this when transfering
-" change this to ctags directory
-if hostname() ==? "serenity"
-	let Tlist_Ctags_Cmd = "/usr/local/bin/ctags" 
-else
-	let Tlist_Ctags_Cmd = "/usr/bin/ctags" 
-endif
 
 "Toggle the sidebars
-nnoremap <silent> <F2> :TlistToggle<CR>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
+nnoremap <silent> <F2> :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""
 " => LaTeX suite stuff:
@@ -314,119 +357,20 @@ let g:Tex_ViewRule_pdf = 'open -a Preview'
 set iskeyword+=:
 "let g:Tex_Folding=0 "I don't like folding.
 
-
 """"""""""""""""""""""""""""""
 " => Omnicppcomplete
 """"""""""""""""""""""""""""""
-
-
-
 " OmniCppComplete (only for work comp?)
-if hostname() !=? 'serentiy'
-	au filetype c++ let OmniCpp_NamespaceSearch = 1
-	let OmniCpp_GlobalScopeSearch = 1
-	let OmniCpp_ShowAccess = 1
-	au filetype c++ let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-	au filetype c++ let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-	au filetype c++ let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-	au filetype c++ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-	let OmniCpp_DefaultNamespaces = ["std"]
-	" automatically open and close the popup menu / preview window
-	au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-	set completeopt=menuone,menu,longest,preview
-else
-	let g:clang_use_library = 1
-	let g:clang_complete_copen = 1
-	let g:clang_library_path = '/Developer/usr/clang-ide/lib/libclang.dylib'
-endif
+au filetype c++ let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+au filetype c++ let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+au filetype c++ let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+au filetype c++ let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+au filetype c++ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std"]
 
-"""""""""""""""""""""""""""""""""""""""
-" Python
-"""""""""""""""""""""""""""""""""""""""
-
-au filetype python set expandtab
-
-
-"""""""""""""""""""""""""""""""""""""""
-" Spell Checking
-"""""""""""""""""""""""""""""""""""""""
-
-"Pressing ,ss will toggle and untoggle spell checking
-map <leader>sc :setlocal spell!<cr>
-
-"Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
-
-"""""""""""""""""""""""""""""""""""""""
-" Autoclose different closable stuff
-"""""""""""""""""""""""""""""""""""""""
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-"autocmd Syntax html,vim inoremap < <lt>><Left>
-
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap } <c-r>=ClosePair('}')<CR>
-inoremap > <c-r>=ClosePair('>')<CR>
-inoremap " <c-r>=QuoteDelim('"')<CR>
-inoremap ' <c-r>=QuoteDelim("'")<CR>
-
-"map the visually selected text
-vnoremap (  <ESC>`>a)<ESC>`<i(<ESC>
-vnoremap )  <ESC>`>a)<ESC>`<i(<ESC>
-vnoremap {  <ESC>`>a}<ESC>`<i{<ESC>
-vnoremap }  <ESC>`>a}<ESC>`<i{<ESC>
-vnoremap "  <ESC>`>a"<ESC>`<i"<ESC>
-vnoremap '  <ESC>`>a'<ESC>`<i'<ESC>
-vnoremap `  <ESC>`>a`<ESC>`<i`<ESC>
-vnoremap [  <ESC>`>a]<ESC>`<i[<ESC>
-vnoremap ]  <ESC>`>a]<ESC>`<i[<ESC>
-
-inoremap <expr> <BS> DeleteEmptyPairs()
-
-function! ClosePair(char)
-  if getline('.')[col('.') - 1] == a:char
-    return "\<Right>"
-  else
-    return a:char
-  endif
-endf
-
-function! QuoteDelim(char)
-  let line = getline('.')
-  let col = col('.')
-  if line[col - 2] == "\\"
-    "Inserting a quoted quotation mark into the string
-    return a:char
-  elseif line[col - 1] == a:char
-    "Escaping out of the string
-    return "\<Right>"
-  else
-    "Starting a string
-    return a:char.a:char."\<Left>"
-  endif
-endf 
-
-function! InAnEmptyPair()
-  let cur = strpart(getline('.'),getpos('.')[2]-2,2)
-  for pair in (split(&matchpairs,',') + ['":"',"':'"])
-    if cur == join(split(pair,':'),'')
-      return 1
-    endif
-  endfor
-  return 0
-endfunc
-
-func! DeleteEmptyPairs()
-    if InAnEmptyPair()
-        return "\<Left>\<Del>\<Del>"
-    else
-        return "\<BS>"
-    endif
-endfunc
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
 
