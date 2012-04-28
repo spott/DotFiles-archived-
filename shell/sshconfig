@@ -10,8 +10,8 @@ User ansp6066
 Compression yes
 ForwardAgent yes
 
-Host photon
-Hostname multiphoton.colorado.edu
+Host photon5
+Hostname photon5.colorado.edu
 User ansp6066
 Compression yes
 ForwardAgent yes
@@ -35,6 +35,12 @@ Compression yes
 ForwardAgent yes
 
 Host *.colorado.edu
+User ansp6066
+Compression yes
+ForwardAgent yes
+
+Host photon5
+Hostname photon5.colorado.edu
 User ansp6066
 Compression yes
 ForwardAgent yes

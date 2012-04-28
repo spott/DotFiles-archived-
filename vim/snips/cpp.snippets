@@ -1,0 +1,9 @@
+snippet cline "create an output for a single line"
+std::cout << $1 << std::endl;
+endsnippet
+
+snippet writefile "Write to a file"
+std::ofstream $1;
+$1.open($2);
+$1.setf($3);
+endsnippet
